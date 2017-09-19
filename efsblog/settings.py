@@ -11,7 +11,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sb-z5h@+gb%p3!$)e)sat0m(kdmk3_i9ng&%-g6s_n)5l^$j#p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
 DEBUG = True
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 
 # Application definition
@@ -65,10 +74,10 @@ WSGI_APPLICATION = 'efsblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1prqbecjjuful',
-        'USER': 'pjhlicdtelwtls',
-        'PASSWORD': 'ed59a05a35f3868edf96a8fa99e7317327d227d728ca4bec6c1a4cadd34c929e',
-        'HOST': 'ec2-54-163-230-219.compute-1.amazonaws.com',
+        'NAME': 'd619bcblbug5g0',
+        'USER': 'oztlaxnqbkhqez',
+        'PASSWORD': 'e79f45c12ec96314be3db2854b276621342e747d05974e836c0aeee4bf3d8a1c',
+        'HOST': 'ec2-54-163-249-237.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -131,14 +140,5 @@ DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['*']
-
-DEBUG = True
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
